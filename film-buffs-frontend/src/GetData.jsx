@@ -7,6 +7,8 @@ export const GetData = () => {
     const [search, setSearch] = useState(null);
     const [film, setFilm] = useState('');
     const [filmDate, setFilmDate] = useState('');
+    const [image, setImage] = useState('');
+    const url = 'https://image.tmdb.org/t/p/original';
 
     // Whenever search is updated, searches for a movie using the value of search as a query
     useEffect(() => {
@@ -15,8 +17,11 @@ export const GetData = () => {
         .then(response => response.json())
         .then(response => {
             // Takes the retrieved title and release date and sets our states to them
+            console.log(response);
             setFilm(response.results[0].title);
             setFilmDate(response.results[0].release_date);
+            // Concatenates result into image URL
+            setImage(url + response.results[0].poster_path);
         })
         .catch(err => console.error(err));
         }
@@ -37,6 +42,7 @@ export const GetData = () => {
         <>
             <h1>{film}</h1>
             <h1>{filmDate}</h1>
+            <img src={image} style={{height: '500px', width: 'auto'}} alt="" />
             <form onSubmit={handleSubmit}>
                 <input name="Title" type="text" placeholder="Enter Movie Title"/>
                 <button type="submit">Submit</button>
