@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { options } from "./options";
+import { DisplayData } from "./DisplayData";
 
 export const GetData = () => {
     const [loading, setLoading] = useState(false);
@@ -40,13 +41,11 @@ export const GetData = () => {
     if (loading) return <h1>Loading...</h1>
     return (
         <>
-            <h1>{film}</h1>
-            <h1>{filmDate}</h1>
-            <img src={image} style={{height: '500px', width: 'auto'}} alt="" />
             <form onSubmit={handleSubmit}>
                 <input name="Title" type="text" placeholder="Enter Movie Title"/>
                 <button type="submit">Submit</button>
             </form>
+            <DisplayData film={film} filmDate={filmDate} image={image}/>
         </>
     )
 }
