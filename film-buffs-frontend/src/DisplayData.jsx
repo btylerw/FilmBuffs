@@ -4,7 +4,7 @@ export const DisplayData = ( {film, filmDate, image} ) => {
         <div>
             <h1>{film}</h1>
             <h1>{filmDate}</h1>
-            <img src={image} alt="" />
+            <img src={image} style={{height: '500px', width: 'auto'}}alt="" />
         </div>
         </>
     )
